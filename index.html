@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premier Bank Limited</title>
+    <!-- bootstrap cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <!-- css link -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+   
+
+    <div id="login-area">
+        <h1 class="text-center text-uppercase">welcome to premier bank</h1>
+
+        <div class="submit-area">
+            <h3>Login</h3>
+            <input type="text" class="form-control py-2 my-5" placeholder="Enter Your email">
+            <input type="password" class="form-control py-2 my-5"  name="" id="" placeholder="Enter Your password">
+            <button id="login-btn" class="btn btn-success py-2 px-4">Login</button>
+            
+        </div>
+
+    </div>
+
+    <div id="transaction-area">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="diposit status">
+                    <h5>Diposit</h5>
+                    <h2>$ <span id="currentDiposit">00</span></h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="withdrow status">
+                    <h5>Withdrow</h5>
+                    <h2>$ <span id="currentWithdrow">00</span></h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="balance status">
+                    <h5>Balance</h5>
+                    <h2>$ <span id="currentBalance">1240</span></h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-6">
+                    <div class="submit-area">
+                    <h4>Diposit</h4>
+                    <input type="text" id="dipositAmount"  class="form-control" placeholder="Enter your diposit amount">
+                    <br>
+                    <button id="dipositBtn" class="btn btn-success">Diposit</button>
+               </div>
+                
+
+            </div>
+            <div class="col-md-6">
+                <div class="submit-area">
+                    <h4>Withdrow</h4>
+                    <input type="text" id="withdrowAmount"  class="form-control" placeholder="Enter your withdrow amount">
+                    <br>
+                    <button id="withdrowBtn" class="btn btn-success">Withdrow</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- bootstrap cdn for javascript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script>
+
+        // login button event handaler
+
+        const loginBtn= document.getElementById('login-btn');
+        loginBtn.addEventListener('click' , function(event) {
+            const loginArea = document.getElementById('login-area');
+            loginArea.style.display = "none";
+            const transactionArea = document.getElementById('transaction-area');
+            transactionArea.style.display = "block";
+            
+        });
+
+        //Diposit button event handaler 
+           const dipositBtn = document.getElementById('dipositBtn');
+           dipositBtn.addEventListener('click' , function(event) {
+           const dipositNumber = getInputNumber('dipositAmount');
+
+        //    const dipositAmount = document.getElementById('dipositAmount').value;
+        //    const dipositNumber =  parseFloat(dipositAmount);
+          
+            
+        //    const currentDiposit = document.getElementById('currentDiposit').innerText;
+        //    const currentNumber = parseFloat(currentDiposit);
+        //    const totalDiposit = dipositNumber + currentNumber ;
+        //    document.getElementById('currentDiposit').innerText = totalDiposit ;
+           
+
+
+        //    adding diposit in total amount section 
+
+        updateSpanText('currentDiposit' , dipositNumber);
+
+
+        updateSpanText('currentBalance' ,dipositNumber);
+
+
+           
+
+
+
+           document.getElementById('dipositAmount').value = '';
+
+        });
+
+        // withdrow button event handeler
+
+            const withdrowBtn = document.getElementById('withdrowBtn');
+            withdrowBtn.addEventListener('click' ,function (event) {
+            // const withdrowAmount = document.getElementById('withdrowAmount').value;
+            // const withdrowNumber = parseFloat(withdrowAmount);
+
+            const withdrowNumber = getInputNumber('withdrowAmount');
+            updateSpanText('currentWithdrow' , withdrowNumber);
+            updateSpanText('currentBalance' , -1* withdrowNumber);
+            
+
+            document.getElementById('withdrowAmount').value = '';
+            
+            
+        });
+
+
+        function getInputNumber(id) {
+            const Amount = document.getElementById(id).value;
+            const amountNumber = parseFloat(Amount);
+            return amountNumber ; 
+            
+        }
+
+
+
+
+        function updateSpanText(id , addNumber) {
+           const prevAmount = document.getElementById(id).innerText;
+           const prevNumber =parseFloat(prevAmount); 
+           const totalCurrentBalance = addNumber + prevNumber;
+           document.getElementById(id).innerText = totalCurrentBalance ; 
+            
+        }
+
+
+
+        
+    </script>
+
+
+
+
+
+</body>
+</html>

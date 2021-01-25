@@ -1,0 +1,51 @@
+body{
+    padding: 100px;
+    text-align: center;
+   
+    
+}
+
+.submit-area{
+    margin-top: 2.7em;
+    border-radius: 10px;
+    box-shadow: 5px 10px 12px rgb(158, 158, 158);
+    padding: 20px;
+    text-align: center;
+
+}
+#transaction-area{
+    display: none;
+}
+
+.diposit{
+    background-color: rgb(81, 62, 204);
+   
+}
+
+.withdrow{
+    background-color: rgb(190, 96, 58);
+    
+}
+
+.balance{
+    background-color: rgb(177, 127, 10);
+    
+}
+
+.status{
+    color: papayawhip;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    transition: 0.4s; 
+
+}
+
+.status:hover{
+    cursor: pointer;
+    box-shadow: 5px 5px 9px rgb(128, 120, 120);
+
+}
+
+
+
